@@ -1,1 +1,1 @@
-uso de forma etica o en entornos controlados. #propiedad de Babycrusher
+uso de forma etica o en entornos controlados. #propiedad de bebetriturador
